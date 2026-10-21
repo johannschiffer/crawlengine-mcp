@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crawlengine-mcp"
+version = "1.0.0"
+description = "Resilient Web Scraping & Clean Markdown Extraction MCP Server for AI Agents"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Johann Schiffer"}
+]
+keywords = ["mcp", "model-context-protocol", "web-scraping", "crawler", "markdown", "claude", "cursor", "ai-agent"]
+dependencies = [
+    "httpx>=0.25.0",
+    "beautifulsoup4>=4.12.0"
+]
+
+[project.scripts]
+crawlengine-mcp = "crawlengine.server:main"
+crawlengine-cli = "crawlengine.cli:main"
