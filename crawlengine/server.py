@@ -208,6 +208,13 @@ class CrawlEngineMCPServer:
                 logger.error(f"Error processing stdio line: {e}")
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(
+        prog="crawlengine-mcp",
+        description="CrawlEngine MCP: Resilient Web Scraping & Clean Markdown Extraction for AI Agents"
+    )
+    parser.add_argument("-v", "--version", action="version", version="%(prog)s 1.0.0")
+    args, unknown = parser.parse_known_args()
     server = CrawlEngineMCPServer()
     server.run_stdio()
 
