@@ -6,6 +6,7 @@
 
 
 
+[![PyPI](https://img.shields.io/pypi/v/crawlengine-mcp.svg)](https://pypi.org/project/crawlengine-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-brightgreen.svg)](https://python.org)
 [![MCP Compliant](https://img.shields.io/badge/MCP-2024--11--05-purple.svg)](https://modelcontextprotocol.io)
@@ -39,8 +40,6 @@ Claude Desktop / Cursor config entry:
     "crawlengine-mcp": {
       "command": "uvx",
       "args": [
-        "--from",
-        "git+https://github.com/johannschiffer/crawlengine-mcp",
         "crawlengine-mcp"
       ]
     }
