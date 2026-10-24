@@ -20,7 +20,7 @@
 ## Run without cloning
 
 ```bash
-uvx --from git+https://github.com/johannschiffer/crawlengine-mcp crawlengine-mcp
+uvx crawlengine-mcp
 ```
 
 Claude Desktop / Cursor config entry:
