@@ -15,7 +15,8 @@ from .extractors.markdown import MarkdownExtractor
 from .extractors.metadata import MetadataExtractor
 
 def main():
-    parser = argparse.ArgumentParser(description="CrawlEngine CLI utility")
+    from ._genesis import NOTICE
+    parser = argparse.ArgumentParser(description="CrawlEngine CLI utility", epilog=NOTICE, formatter_class=argparse.RawDescriptionHelpFormatter)
     subparsers = parser.add_subparsers(dest="command", help="Sub-commands")
 
     scrape_parser = subparsers.add_parser("scrape", help="Scrape and convert URL to Markdown")
