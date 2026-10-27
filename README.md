@@ -1,24 +1,25 @@
-# CrawlEngine MCP (Lite Edition)
+# crawlengine-mcp (v2.0.0)
+
+[![PyPI version](https://img.shields.io/badge/PyPI-v2.0.0-blue.svg)](https://pypi.org/project/crawlengine-mcp/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Support on Ko-fi](https://img.shields.io/badge/Support%20on-Ko--fi-ff5e5b.svg)](https://ko-fi.com/johannschiffer)
+
+> **100% Free & Open Source (MIT)**: All features, proxy rotation, migration simulation, Docker stacks, and recipes are completely unlocked. Support open development on [Ko-fi](https://ko-fi.com/johannschiffer).
 
 <a href="https://glama.ai/mcp/servers/@johannschiffer/crawlengine-mcp">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@johannschiffer/crawlengine-mcp/badge" alt="crawlengine-mcp MCP server" />
 </a>
 
-
-
-[![Early Access $9](https://img.shields.io/badge/Early%20Access-%249%20Promo-orange.svg)](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS)
 [![PyPI](https://img.shields.io/pypi/v/crawlengine-mcp.svg)](https://pypi.org/project/crawlengine-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-brightgreen.svg)](https://python.org)
 [![MCP Compliant](https://img.shields.io/badge/MCP-2024--11--05-purple.svg)](https://modelcontextprotocol.io)
 [![Awesome MCP Servers](https://img.shields.io/badge/Awesome--MCP--Servers-TensorBlock-blue?style=flat-square)](https://github.com/TensorBlock/awesome-mcp-servers)
 
-
 > ### ⚡ Enterprise Infrastructure & Tooling
 > | Package | Access | Features |
 > |---|---|---|
-> | **Starter Kit** | **Free ($0+)** | 25+ `.cursorrules`, `CLAUDE.md` stack rules & MCP config templates. [Download Free](https://johanld.gumroad.com/l/genesis-starter-kit) |
-> | **Enterprise Suite Pro** | **$9 Early Access** ~~$19~~ | 6 Pro MCP Servers, Zero-Downtime DB migrations, Residential Proxies, Docker Compose Stack & Commercial License. [Get Early Access ($9)](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS) |
+> | **Starter Kit** | **Free ($0+)** | 25+ `.cursorrules`, `CLAUDE.md` stack rules & MCP config templates. [Download Free](https://github.com/johannschiffer) |
 > | **Config Generator** | **Free Web Tool** | Interactive visual config generator for Claude Desktop & Cursor. [Open Generator](https://johannschiffer.github.io/) |
 
 **Official Indexing:** Verified and listed in [TensorBlock/awesome-mcp-servers](https://github.com/TensorBlock/awesome-mcp-servers) under Browser Automation & Web Scraping. [![Awesome MCP Servers](https://img.shields.io/badge/Awesome--MCP--Servers-TensorBlock-blue?style=flat-square)](https://github.com/TensorBlock/awesome-mcp-servers)
@@ -53,7 +54,6 @@ Claude Desktop / Cursor config entry:
 ## 🕷️ Why CrawlEngine MCP?
 
 Most default web-fetching tools used by AI models suffer from severe drawbacks:
-1. **Raw HTML Token Bloat:** A 150KB web page contains ~90% useless boilerplate (navbars, tracking pixels, CSS bundles, cookie banners) that burns LLM tokens and induces hallucinations.
 2. **Instant HTTP 403 Blocks:** Default Python `urllib` or `requests` User-Agents trigger anti-bot WAFs immediately.
 3. **Broken Relative Links:** Naive scrapers return unnavigable relative paths (`/docs/quickstart`) instead of canonical URLs.
 
@@ -61,7 +61,7 @@ Most default web-fetching tools used by AI models suffer from severe drawbacks:
 
 ---
 
-## ⚡ Features (Lite Edition)
+## ⚡ Features (Open Source v2.0)
 
 - 🧹 **Semantic Markdown Conversion**: Strips scripts, styles, popups, cookie consent overlays, and ads, keeping only the core article or documentation.
 - 🎭 **Realistic Browser Fingerprinting**: Automatically rotates `User-Agent`, `Sec-Ch-Ua`, and platform headers across Chrome, Safari, and Firefox.
@@ -121,7 +121,7 @@ python -m crawlengine.cli scrape https://news.ycombinator.com
 
 Dealing with complex JavaScript SPAs, Cloudflare Turnstile, or scraping behind proxy pools?
 
-| Feature | Lite (Open Source) | Enterprise Suite ($9 Early Access) |
+| Feature | v1.0 (Legacy) | v2.0 (Open Source) |
 |---|:---:|:---:|
 | **Semantic Markdown Extraction** | ✅ | ✅ |
 | **Browser Fingerprint Rotation** | ✅ | ✅ |
@@ -133,10 +133,7 @@ Dealing with complex JavaScript SPAs, Cloudflare Turnstile, or scraping behind p
 | **Production Docker Container** | ❌ | ✅ |
 | **Full Pytest Suite & Anti-Detection Guide** | ❌ | ✅ |
 
-👉 **[Get the Genesis Enterprise Suite ($9 Early Access)](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS)**
-
 ---
-
 
 ## Solución Enterprise (Genesis Suite)
 
@@ -146,9 +143,7 @@ Para despliegues en producción y cargas intensivas con bypass de rate limits, s
 - **Soporte Multi-Tenant & RBAC:** Control de accesos granular, gestión de secretos y auditoría criptográfica.
 - **Docker Compose Stacks:** Contenedores precompilados y configuraciones listas para producción con orquestación autónoma.
 
-👉 **[Genesis Enterprise Suite ($9 Early Access)](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS)**  
-📦 **[Genesis AI Engineering Starter Kit ($0+)](https://johanld.gumroad.com/l/genesis-starter-kit)**
-
+  
 
 ## 📄 License
 
@@ -173,7 +168,7 @@ Proxies that work well with CrawlEngine MCP. Some links are referral links.
 | **SysFlow MCP** | Safe Linux administration plane: systemd, port audit, isolated execution | [GitHub](https://github.com/johannschiffer/sysflow-mcp) |
 | **FastMCP Forge** | Production MCP server scaffolder: stdio, SSE and auth middleware | [GitHub](https://github.com/johannschiffer/fastmcp-forge) |
 
-[Live config builder](https://johannschiffer.github.io) | [Starter Kit, free](https://johanld.gumroad.com/l/genesis-starter-kit) | [Enterprise Suite, $9 Early Access](https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS)
+[Live config builder](https://johannschiffer.github.io) | [GitHub Profile](https://github.com/johannschiffer) | [Support on Ko-fi ☕](https://ko-fi.com/johannschiffer)
 
 ## Recommended Infrastructure & Sponsorship
 

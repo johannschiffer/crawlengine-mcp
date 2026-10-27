@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "crawlengine-mcp"
-version = "1.0.4"
-description = "Resilient Web Scraping & Clean Markdown Extraction MCP Server for AI Agents"
+version = "2.0.0"
+description = "Anti-bot web scraping, proxy rotation, and clean markdown extraction MCP server for AI agents"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
@@ -29,8 +29,8 @@ crawlengine-cli = "crawlengine.cli:main"
 include = ["crawlengine*"]
 
 [project.urls]
+"Support / Donate" = "https://ko-fi.com/johannschiffer"
+"Documentation" = "https://johannschiffer.github.io"
 Funding = "https://github.com/sponsors/johannschiffer"
 Homepage = "https://johannschiffer.github.io"
 Repository = "https://github.com/johannschiffer/crawlengine-mcp"
-"Starter Kit" = "https://johanld.gumroad.com/l/genesis-starter-kit"
-"Enterprise Suite" = "https://johanld.gumroad.com/l/genesis-enterprise-suite/EARLYACCESS"

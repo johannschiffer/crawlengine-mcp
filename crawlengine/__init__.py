@@ -1,8 +1,9 @@
 """
-CrawlEngine MCP (Lite Edition)
-Resilient Web Scraping & Clean Markdown Extraction Engine for AI Agents.
+crawlengine-mcp (v2.0.0)
+Anti-bot web scraping, proxy rotation, and clean markdown extraction MCP server for AI agents
+100% Free & Open Source under the MIT License.
 """
 
-__version__ = "1.0.4"
-__author__ = "Johann Schiffer / NEXUS"
+__version__ = "2.0.0"
+__author__ = "Johann Schiffer"
 __license__ = "MIT"

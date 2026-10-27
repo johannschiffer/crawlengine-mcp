@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "crawlengine-mcp": {
+      "command": "uvx",
+      "args": ["crawlengine-mcp"]
+    }
+  }
+}
