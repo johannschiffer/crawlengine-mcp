@@ -1,4 +1,3 @@
-from ._genesis import NOTICE, print_upgrade_notice
 """
 CrawlEngine MCP: Model Context Protocol Server (Enterprise Pro Edition)
 Includes Header Fingerprint Rotation, Semantic Markdown Extractor,
@@ -287,7 +286,6 @@ class CrawlEngineProServer:
                 logger.error(f"Error processing stdio line: {e}")
 
 def main():
-    print_upgrade_notice()
     server = CrawlEngineProServer()
     server.run_stdio()
 

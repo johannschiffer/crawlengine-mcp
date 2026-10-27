@@ -68,8 +68,11 @@ Most default web-fetching tools used by AI models suffer from severe drawbacks:
 - 🎭 **Realistic Browser Fingerprinting**: Automatically rotates `User-Agent`, `Sec-Ch-Ua`, and platform headers across Chrome, Safari, and Firefox.
 - 🔗 **Deep Link Discovery**: Extracts all outbound and internal links with anchor text.
 - 🏷️ **Metadata Extraction**: Gathers OpenGraph, Twitter Cards, meta descriptions, and canonical URLs.
+- 🌐 **Automatic Headless Browser Fallback**: Playwright Chromium support for complex JavaScript SPA hydration (React, Next.js, Vue).
+- 🛡️ **Proxy Pool Rotation**: HTTP & SOCKS5 proxy rotation with automatic failure ejection.
+- 📊 **Structured Data Extraction**: JSON-LD schema parsing, pricing tables, and product data.
+- 🐳 **Production Docker Container**: Multi-stage containerized setup ready for production.
 - 🪶 **Zero Complex Dependencies**: Pure Python using `httpx` and `beautifulsoup4`.
-
 ---
 
 ## 🚀 Quick Setup in 2 Minutes
@@ -118,24 +121,6 @@ python -m crawlengine.cli scrape https://news.ycombinator.com
 
 ---
 
-## 💎 Need Enterprise Anti-Bot Scraping? Upgrade to CrawlEngine Pro
-
-Dealing with complex JavaScript SPAs, Cloudflare Turnstile, or scraping behind proxy pools?
-
-| Feature | v1.0 (Legacy) | v2.0 (Open Source) |
-|---|:---:|:---:|
-| **Semantic Markdown Extraction** | ✅ | ✅ |
-| **Browser Fingerprint Rotation** | ✅ | ✅ |
-| **OpenGraph & Link Extraction** | ✅ | ✅ |
-| **Automatic Headless Browser Fallback** *(Playwright Chromium)* | ❌ | ✅ |
-| **JavaScript SPA Hydration** *(React, Next.js, Vue)* | ❌ | ✅ |
-| **Proxy Pool Rotation** *(HTTP & SOCKS5 with auto-ejection)* | ❌ | ✅ |
-| **Structured Data Extractor** *(JSON-LD, Pricing Tables, Products)* | ❌ | ✅ |
-| **Production Docker Container** | ❌ | ✅ |
-| **Full Pytest Suite & Anti-Detection Guide** | ❌ | ✅ |
-
----
-
 ## 📄 License
 
 MIT License. See [LICENSE](LICENSE) for details.
@@ -168,3 +153,11 @@ Proxies that work well with CrawlEngine MCP. Some links are referral links.
   - **High-Performance VPS & Nodes**: [Hetzner Cloud](https://www.hetzner.com/cloud) & [DigitalOcean](https://m.do.co/c/johannschiffer)
   - **Reliable Proxy Pool & IP Rotation**: [Webshare](https://www.webshare.io/) & [Bright Data](https://brightdata.com/)
   - **Documentation & Setup Guides**: [johannschiffer.github.io](https://johannschiffer.github.io/)
+
+---
+
+## Support
+
+[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/johannschiffer)
+
+If you find this tool helpful, you can support its maintenance via Ko-fi.

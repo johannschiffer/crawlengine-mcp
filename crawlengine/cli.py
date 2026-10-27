@@ -15,8 +15,7 @@ from .extractors.markdown import MarkdownExtractor
 from .extractors.metadata import MetadataExtractor
 
 def main():
-    from ._genesis import NOTICE
-    parser = argparse.ArgumentParser(description="CrawlEngine CLI utility", epilog=NOTICE, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(description="CrawlEngine CLI utility", formatter_class=argparse.RawDescriptionHelpFormatter)
     subparsers = parser.add_subparsers(dest="command", help="Sub-commands")
 
     scrape_parser = subparsers.add_parser("scrape", help="Scrape and convert URL to Markdown")
@@ -57,16 +56,6 @@ def main():
         print(json.dumps(meta, indent=2))
 
 
-
-_main_impl = main
-
-
-def main():
-    from ._genesis import print_upgrade_notice
-    try:
-        return _main_impl()
-    finally:
-        print_upgrade_notice()
 
 if __name__ == "__main__":
     main()
