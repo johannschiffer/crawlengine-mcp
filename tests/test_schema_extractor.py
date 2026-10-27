@@ -11,7 +11,7 @@ def test_json_ld_extraction():
         {
           "@context": "https://schema.org",
           "@type": "Product",
-          "name": "Pro Widget",
+          "name": "Test Widget",
           "price": "14.99"
         }
         </script>
@@ -21,7 +21,7 @@ def test_json_ld_extraction():
     """
     schemas = SchemaExtractor.extract_json_ld(html)
     assert len(schemas) == 1
-    assert schemas[0]["name"] == "Pro Widget"
+    assert schemas[0]["name"] == "Test Widget"
     assert schemas[0]["price"] == "14.99"
 
 def test_html_table_extraction():
@@ -32,7 +32,7 @@ def test_html_table_extraction():
       </thead>
       <tbody>
         <tr><td>Lite</td><td>$0</td></tr>
-        <tr><td>Pro</td><td>$14.99</td></tr>
+        <tr><td>Standard</td><td>$14.99</td></tr>
       </tbody>
     </table>
     """

@@ -1,5 +1,5 @@
 """
-CrawlEngine MCP: Model Context Protocol Server (Enterprise Pro Edition)
+CrawlEngine MCP: Model Context Protocol Server
 Includes Header Fingerprint Rotation, Semantic Markdown Extractor,
 Proxy Pool Manager, and JSON-LD/Table Structured Schema Extractor.
 """
@@ -17,10 +17,10 @@ from .core.schema_extractor import SchemaExtractor
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] [CrawlEngine-Pro] %(message)s",
+    format="%(asctime)s [%(levelname)s] [CrawlEngine] %(message)s",
     stream=sys.stderr
 )
-logger = logging.getLogger("CrawlEngineProServer")
+logger = logging.getLogger("CrawlEngineServer")
 
 BOT_CHALLENGE_INDICATORS = [
     "attention required! | cloudflare",
@@ -30,9 +30,9 @@ BOT_CHALLENGE_INDICATORS = [
     "cf-browser-verification"
 ]
 
-class CrawlEngineProServer:
+class CrawlEngineServer:
     def __init__(self):
-        self.server_name = "crawlengine-mcp-pro"
+        self.server_name = "crawlengine-mcp"
         self.server_version = "1.0.0"
         self.proxy_pool = ProxyPool()
 
@@ -119,7 +119,7 @@ class CrawlEngineProServer:
     def handle_tool_call(self, name: str, arguments: Dict[str, Any]) -> Dict[str, Any]:
         if name == "get_proxy_status":
             return {
-                "edition": "Enterprise Pro",
+                
                 "proxy_pool": self.proxy_pool.get_stats()
             }
 
@@ -211,7 +211,7 @@ class CrawlEngineProServer:
 
         if req_id is None:
             if method == "notifications/initialized":
-                logger.info("Pro client completed initialization handshake.")
+                logger.info("Client completed initialization handshake.")
             return None
 
         if method == "initialize":
@@ -286,7 +286,7 @@ class CrawlEngineProServer:
                 logger.error(f"Error processing stdio line: {e}")
 
 def main():
-    server = CrawlEngineProServer()
+    server = CrawlEngineServer()
     server.run_stdio()
 
 if __name__ == "__main__":

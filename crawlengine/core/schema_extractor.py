@@ -1,5 +1,5 @@
 """
-Structured Data & Schema Extractor (CrawlEngine Pro Core).
+Structured Data & Schema Extractor.
 Parses JSON-LD blocks and tabular data into clean structured JSON schemas for LLMs.
 """
 import json

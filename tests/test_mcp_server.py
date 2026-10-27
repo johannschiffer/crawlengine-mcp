@@ -1,13 +1,13 @@
 """
-Unit tests for CrawlEngine Pro MCP Server JSON-RPC protocol compliance.
+Unit tests for CrawlEngine MCP Server JSON-RPC protocol compliance.
 """
 import pytest
 import json
 from unittest.mock import patch
-from crawlengine.server import CrawlEngineProServer
+from crawlengine.server import CrawlEngineServer
 
 def test_mcp_initialize():
-    server = CrawlEngineProServer()
+    server = CrawlEngineServer()
     req = {
         "jsonrpc": "2.0",
         "id": 1,
@@ -20,10 +20,10 @@ def test_mcp_initialize():
     }
     resp = server.handle_request(req)
     assert resp["id"] == 1
-    assert resp["result"]["serverInfo"]["name"] == "crawlengine-mcp-pro"
+    assert resp["result"]["serverInfo"]["name"] == "crawlengine-mcp"
 
 def test_mcp_tools_list():
-    server = CrawlEngineProServer()
+    server = CrawlEngineServer()
     req = {
         "jsonrpc": "2.0",
         "id": 2,
@@ -39,10 +39,10 @@ def test_mcp_tools_list():
     assert "extract_metadata" in names
     assert "get_proxy_status" in names
 
-@patch("crawlengine.server.CrawlEngineProServer._fetch_html")
+@patch("crawlengine.server.CrawlEngineServer._fetch_html")
 def test_mcp_scrape_url_mock(mock_fetch):
     mock_fetch.return_value = (200, "<html><head><title>Mock</title></head><body><h1>Heading</h1><p>Text</p></body></html>")
-    server = CrawlEngineProServer()
+    server = CrawlEngineServer()
     req = {
         "jsonrpc": "2.0",
         "id": 3,

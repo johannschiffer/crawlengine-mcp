@@ -1,5 +1,5 @@
 """
-Proxy Pool Manager (CrawlEngine Pro Core).
+Proxy Pool Manager.
 Handles round-robin rotation, health tracking, and automated failure ejection for HTTP/SOCKS5 proxies.
 """
 import os
