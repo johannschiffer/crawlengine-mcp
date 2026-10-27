@@ -6,6 +6,12 @@
 
 > **100% Free & Open Source (MIT)**: All features, proxy rotation, migration simulation, Docker stacks, and recipes are completely unlocked. Support open development on [Ko-fi](https://ko-fi.com/johannschiffer).
 
+> ### ⚡ Open Source Ecosystem & Community Tools
+> | Resource | Access | Description |
+> |---|---|---|
+> | **Ruleset Bundle** | **100% Free** | 55+ production rulesets & MCP config templates. [Download Free](https://johannschiffer.github.io/) |
+> | **Support & Donate** | **Ko-fi** | Support open-source maintenance. [Support on Ko-fi](https://ko-fi.com/johannschiffer) |
+
 <a href="https://glama.ai/mcp/servers/@johannschiffer/crawlengine-mcp">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@johannschiffer/crawlengine-mcp/badge" alt="crawlengine-mcp MCP server" />
 </a>
@@ -16,11 +22,6 @@
 [![MCP Compliant](https://img.shields.io/badge/MCP-2024--11--05-purple.svg)](https://modelcontextprotocol.io)
 [![Awesome MCP Servers](https://img.shields.io/badge/Awesome--MCP--Servers-TensorBlock-blue?style=flat-square)](https://github.com/TensorBlock/awesome-mcp-servers)
 
-> ### ⚡ Enterprise Infrastructure & Tooling
-> | Package | Access | Features |
-> |---|---|---|
-> | **Starter Kit** | **Free ($0+)** | 25+ `.cursorrules`, `CLAUDE.md` stack rules & MCP config templates. [Download Free](https://github.com/johannschiffer) |
-> | **Config Generator** | **Free Web Tool** | Interactive visual config generator for Claude Desktop & Cursor. [Open Generator](https://johannschiffer.github.io/) |
 
 **Official Indexing:** Verified and listed in [TensorBlock/awesome-mcp-servers](https://github.com/TensorBlock/awesome-mcp-servers) under Browser Automation & Web Scraping. [![Awesome MCP Servers](https://img.shields.io/badge/Awesome--MCP--Servers-TensorBlock-blue?style=flat-square)](https://github.com/TensorBlock/awesome-mcp-servers)
 
@@ -134,16 +135,6 @@ Dealing with complex JavaScript SPAs, Cloudflare Turnstile, or scraping behind p
 | **Full Pytest Suite & Anti-Detection Guide** | ❌ | ✅ |
 
 ---
-
-## Solución Enterprise (Genesis Suite)
-
-Para despliegues en producción y cargas intensivas con bypass de rate limits, soporte multi-tenant y configuraciones Docker precompiladas:
-
-- **Bypass de Rate Limits & IP Rotation:** Bypass de rate limits y scraping de alto volumen con pools de proxies residenciales y evasión WAF/TLS.
-- **Soporte Multi-Tenant & RBAC:** Control de accesos granular, gestión de secretos y auditoría criptográfica.
-- **Docker Compose Stacks:** Contenedores precompilados y configuraciones listas para producción con orquestación autónoma.
-
-  
 
 ## 📄 License
 
