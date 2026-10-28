@@ -1,24 +1,29 @@
 """
-CrawlEngine CLI testing utility.
+CrawlEngine CLI utility.
 Usage:
-  python -m crawlengine.cli scrape https://news.ycombinator.com
-  python -m crawlengine.cli links https://github.com
-  python -m crawlengine.cli meta https://dev.to
+  crawlengine-cli scrape https://example.com
+  crawlengine-cli links https://example.com
+  crawlengine-cli meta https://example.com
 """
 
 import argparse
 import json
 import sys
-import httpx
-from .headers.rotator import HeaderRotator
-from .extractors.markdown import MarkdownExtractor
-from .extractors.metadata import MetadataExtractor
 
-def main():
-    parser = argparse.ArgumentParser(description="CrawlEngine CLI utility", formatter_class=argparse.RawDescriptionHelpFormatter)
+from . import __version__
+from .server import CrawlEngineServer
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        prog="crawlengine-cli",
+        description="CrawlEngine CLI utility",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument("-v", "--version", action="version", version=f"crawlengine-cli {__version__}")
     subparsers = parser.add_subparsers(dest="command", help="Sub-commands")
 
-    scrape_parser = subparsers.add_parser("scrape", help="Scrape and convert URL to Markdown")
+    scrape_parser = subparsers.add_parser("scrape", help="Fetch and convert URL to Markdown")
     scrape_parser.add_argument("url", help="URL to scrape")
 
     links_parser = subparsers.add_parser("links", help="Extract links from URL")
@@ -34,27 +39,25 @@ def main():
         parser.print_help()
         sys.exit(0)
 
-    headers = HeaderRotator.get_headers(referer=args.url)
-    try:
-        with httpx.Client(follow_redirects=True, timeout=15.0) as client:
-            resp = client.get(args.url, headers=headers)
-            html = resp.text
-    except Exception as e:
-        print(f"Error fetching URL: {e}", file=sys.stderr)
-        sys.exit(1)
-
+    server = CrawlEngineServer()
     if args.command == "scrape":
-        md = MarkdownExtractor.html_to_markdown(html, base_url=args.url)
-        print(md)
-
+        res = server.handle_tool_call("scrape_url", {"url": args.url})
+        if not res.get("success"):
+            print(f"[ERROR] {res.get('error')}", file=sys.stderr)
+            sys.exit(1)
+        print(res["markdown"])
     elif args.command == "links":
-        links = MetadataExtractor.extract_links(html, base_url=args.url, internal_only=args.internal_only)
-        print(json.dumps(links, indent=2))
-
+        res = server.handle_tool_call("extract_links", {"url": args.url, "internal_only": args.internal_only})
+        if not res.get("success"):
+            print(f"[ERROR] {res.get('error')}", file=sys.stderr)
+            sys.exit(1)
+        print(json.dumps(res["links"], indent=2))
     elif args.command == "meta":
-        meta = MetadataExtractor.extract(html, base_url=args.url)
-        print(json.dumps(meta, indent=2))
-
+        res = server.handle_tool_call("extract_metadata", {"url": args.url})
+        if not res.get("success"):
+            print(f"[ERROR] {res.get('error')}", file=sys.stderr)
+            sys.exit(1)
+        print(json.dumps(res["metadata"], indent=2))
 
 
 if __name__ == "__main__":
