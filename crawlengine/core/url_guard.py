@@ -23,7 +23,8 @@ _NUMERIC_HOST_RE = re.compile(r"^(0x[0-9a-f]+|\d+(\.\d+){0,3})$", re.IGNORECASE)
 
 def _is_forbidden_ip(ip_obj: ipaddress._BaseAddress) -> bool:
     return (
-        ip_obj.is_private
+        not ip_obj.is_global
+        or ip_obj.is_private
         or ip_obj.is_loopback
         or ip_obj.is_link_local
         or ip_obj.is_multicast
@@ -45,6 +46,11 @@ def validate_crawl_url(url: str) -> Tuple[bool, str]:
     host = (parsed.hostname or "").strip().lower().rstrip(".")
     if not host:
         return False, "Invalid URL: missing hostname."
+
+    try:
+        _ = parsed.port
+    except ValueError:
+        return False, "Invalid URL: malformed port."
 
     if os.getenv("CRAWLENGINE_ALLOW_PRIVATE_URLS", "").strip() in ("1", "true", "yes"):
         return True, "Allowed by environment override."
@@ -88,3 +94,4 @@ def validate_crawl_url(url: str) -> Tuple[bool, str]:
             return False, f"Blocked target host '{host}': resolves to non-public IP '{ip_obj}'."
 
     return True, "Valid public URL."
+

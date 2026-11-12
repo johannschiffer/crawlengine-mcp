@@ -72,3 +72,11 @@ def test_cli_version_and_jsonrpc_parse_error():
     assert proc.returncode == 0
     err = json.loads(proc.stdout.strip())
     assert err["error"]["code"] == -32700
+
+
+
+def test_blocks_cgnat_and_malformed_port():
+    from crawlengine.core.url_guard import validate_crawl_url
+
+    assert validate_crawl_url("http://100.64.0.1")[0] is False
+    assert validate_crawl_url("http://1.1.1.1:99999")[0] is False

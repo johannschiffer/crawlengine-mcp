@@ -14,6 +14,7 @@ import httpx
 
 from . import __version__
 from .core.proxy_pool import ProxyPool
+from .core.safe_transport import guarded_transport
 from .core.schema_extractor import SchemaExtractor
 from .core.url_guard import validate_crawl_url
 from .extractors.markdown import MarkdownExtractor
@@ -114,6 +115,8 @@ class CrawlEngineServer:
         }
         if proxy:
             client_kwargs["proxy"] = proxy
+        else:
+            client_kwargs["transport"] = guarded_transport()
 
         try:
             with httpx.Client(**client_kwargs) as client:
@@ -138,6 +141,8 @@ class CrawlEngineServer:
             raise ValueError(f"Unknown tool: {name}")
 
         url = str(arguments.get("url", "")).strip()
+        if url and "://" not in url:
+            url = f"https://{url}"
         ok_url, reason = validate_crawl_url(url)
         if not ok_url:
             return {"success": False, "error": reason}
@@ -294,7 +299,7 @@ class CrawlEngineServer:
                 return {
                     "jsonrpc": "2.0",
                     "id": req_id,
-                    "error": {"code": -32000, "message": str(e)},
+                    "error": {"code": -32602 if str(e).startswith(("Unknown tool", "Tool not found")) else -32000, "message": str(e)},
                 }
 
         return {
