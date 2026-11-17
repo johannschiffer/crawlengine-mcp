@@ -8,11 +8,13 @@ import argparse
 import json
 import logging
 import sys
+import time
 from typing import Any, Dict, List, Optional
 
 import httpx
 
 from . import __version__
+from ._genesis import record_blackbox_event
 from .core.proxy_pool import ProxyPool
 from .core.safe_transport import guarded_transport
 from .core.schema_extractor import SchemaExtractor
@@ -134,6 +136,34 @@ class CrawlEngineServer:
             raise
 
     def handle_tool_call(self, name: str, arguments: Dict[str, Any]) -> Dict[str, Any]:
+        start_t = time.perf_counter()
+        result = self._execute_tool_call(name, arguments)
+        duration_ms = round((time.perf_counter() - start_t) * 1000.0, 3)
+        if name in ("scrape_url", "extract_structured_data", "extract_links", "extract_metadata"):
+            record_blackbox_event(
+                "HTTP_CLIENT",
+                {
+                    "tool": name,
+                    "method": "GET",
+                    "url": result.get("url") or arguments.get("url", ""),
+                    "status_code": result.get("status_code"),
+                    "error": result.get("error"),
+                },
+                source=self.server_name,
+                duration_ms=duration_ms,
+                status="ok" if result.get("success", False) else "error",
+            )
+        elif name == "get_proxy_status":
+            record_blackbox_event(
+                "MCP_TOOL",
+                {"tool": name},
+                source=self.server_name,
+                duration_ms=duration_ms,
+                status="ok",
+            )
+        return result
+
+    def _execute_tool_call(self, name: str, arguments: Dict[str, Any]) -> Dict[str, Any]:
         if name == "get_proxy_status":
             return {"proxy_pool": self.proxy_pool.get_stats()}
 
